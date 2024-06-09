@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  dev-db:
+    image: postgres:13
+    volumes:
+      - auth_volume:/var/lib/postgresql/data
+    ports:
+      - 5435:5432
+    env_file:
+      - .env
+    networks:
+      - auth_network
+
+networks:
+  auth_network:
+    driver: bridge
+
+volumes:
+  auth_volume:
